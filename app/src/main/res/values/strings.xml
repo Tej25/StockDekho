@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Stock Dekho</string>
+    <string name="NavDrawerOpen">OpenNavigationDrawer</string>
+    <string name="NavDrawerClose">CloseNavigationDrawer</string>
+</resources>

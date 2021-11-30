@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@id/img_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="54dp"/>
+    <TextView
+        android:id="@id/app_nametxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="60dp"
+        android:fontFamily="@font/artifika"
+        app:layout_constraintStart_toStartOf="@id/img_logo"
+        app:layout_constraintEnd_toEndOf="@id/img_logo"
+        app:layout_constraintTop_toBottomOf="@id/img_logo"
+        android:layout_marginTop="16dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/mail_txtlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:hintTextColor="#000000"
+        android:fontFamily="@font/artifika"
+        android:textColorHint="#000000"
+        android:hint="EMAIL ID"
+        android:background="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@id/app_nametxt"
+        app:layout_constraintEnd_toEndOf="@id/app_nametxt"
+        app:layout_constraintTop_toBottomOf="@id/app_nametxt"
+        android:layout_marginTop="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mail_txt"
+            android:layout_width="280dp"
+            android:textColor="#000000"
+            android:fontFamily="@font/artifika"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_txtlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        app:hintTextColor="#000000"
+        android:hint="PASSWORD"
+        android:fontFamily="@font/artifika"
+        android:textColorHint="#000000"
+        android:background="#FFFFFF"
+        app:layout_constraintStart_toStartOf="@id/mail_txtlay"
+        app:layout_constraintEnd_toEndOf="@id/mail_txtlay"
+        app:layout_constraintTop_toBottomOf="@id/mail_txtlay"
+        app:passwordToggleEnabled="true"
+        android:layout_marginTop="24dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_txt"
+            android:layout_width="280dp"
+            android:textColor="#000000"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/artifika"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#000000"
+        android:text="LOGIN"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/artifika"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@id/password_txtlay"
+        app:layout_constraintEnd_toEndOf="@id/password_txtlay"
+        app:layout_constraintTop_toBottomOf="@id/password_txtlay"
+        android:layout_marginTop="24dp"/>
+    <Button
+        android:id="@+id/forgotpassword_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0000"
+        android:text="Forgot Password?"
+        android:letterSpacing="0.05"
+        android:textColor="#FF0000"
+        android:fontFamily="@font/artifika"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@id/login_btn"
+        app:layout_constraintEnd_toEndOf="@id/login_btn"
+        app:layout_constraintTop_toBottomOf="@id/login_btn"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/sigup_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0000"
+        android:fontFamily="@font/artifika"
+        android:letterSpacing="0.05"
+        android:text="Sign Up"
+        android:textColor="#FF0000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/signup_lbl"
+        app:layout_constraintEnd_toEndOf="@+id/forgotpassword_btn"
+        app:layout_constraintTop_toBottomOf="@+id/forgotpassword_btn" />
+    <TextView
+        android:id="@+id/signup_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't Have a Account? "
+        android:textColor="#000000"
+        android:fontFamily="@font/artifika"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/sigup_btn"
+        app:layout_constraintEnd_toStartOf="@+id/sigup_btn"
+        app:layout_constraintStart_toStartOf="@+id/forgotpassword_btn"
+        app:layout_constraintTop_toTopOf="@+id/sigup_btn" />
+
+    <ProgressBar
+        android:id="@+id/p_bar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminateTint="@color/black"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

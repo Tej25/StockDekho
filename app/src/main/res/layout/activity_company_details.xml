@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CompanyDetailsActivity">
+
+    <TextView
+        android:id="@+id/CompanyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Company Details:"
+        android:textSize="40sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/artifika"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/companyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="companyName"
+        android:textSize="34sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/artifika"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/CompanyTitle"
+        app:layout_constraintTop_toBottomOf="@id/CompanyTitle"/>
+
+    <TextView
+        android:id="@+id/companySymbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="companySymbol"
+        android:textSize="24sp"
+        android:textColor="#919191"
+        android:fontFamily="@font/artifika"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/companyName"
+        app:layout_constraintTop_toBottomOf="@id/companyName"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

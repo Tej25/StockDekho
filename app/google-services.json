@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "21603652017",
+    "project_id": "stockdekho2",
+    "storage_bucket": "stockdekho2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21603652017:android:482b7f042223d1d7182d90",
+        "android_client_info": {
+          "package_name": "vit.project.stock_dekho2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21603652017-u5ug46fd37hvbs9b8ggco0cvch3n0npo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfQ3rgPdkEltt_7IvkT3NeK52U1k3-hYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21603652017-u5ug46fd37hvbs9b8ggco0cvch3n0npo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
