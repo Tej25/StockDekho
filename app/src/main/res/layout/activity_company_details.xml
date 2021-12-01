@@ -1,46 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="16dp"
     tools:context=".CompanyDetailsActivity">
 
     <TextView
         android:id="@+id/CompanyTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Company Details:"
-        android:textSize="40sp"
-        android:textColor="#000000"
+        android:layout_alignParentStart="true"
         android:fontFamily="@font/artifika"
+        android:text="Company Details:"
+        android:textColor="#000000"
+        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/companyName"
-        android:layout_width="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="companyName"
-        android:textSize="34sp"
-        android:textColor="#000000"
+        android:layout_below="@id/CompanyTitle"
+        android:ellipsize="end"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/artifika"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@id/CompanyTitle"
-        app:layout_constraintTop_toBottomOf="@id/CompanyTitle"/>
+        android:maxLines="1"
+        android:text="companyName"
+        android:textColor="#000000"
+        android:textSize="34sp" />
 
     <TextView
         android:id="@+id/companySymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="companySymbol"
-        android:textSize="24sp"
-        android:textColor="#919191"
+        android:layout_below="@id/companyName"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
         android:fontFamily="@font/artifika"
+        android:maxLines="1"
+        android:text="companySymbol"
+        android:textColor="#919191"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/companyPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/companySymbol"
+        android:layout_below="@id/companyName"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="textEnd"
+        android:ellipsize="end"
+        android:fontFamily="@font/artifika"
+        android:maxLines="1"
+        android:text="Price/-"
+        android:textColor="#919191"
+        android:textSize="24sp"/>
+
+    <ImageView
+        android:id="@+id/graph_example"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@id/companySymbol"
+        android:src="@drawable/logo"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/isin_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/graph_example"
+        android:fontFamily="@font/artifika"
+        android:text="ISIN: "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/isin"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/graph_example"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@id/companyName"
-        app:layout_constraintTop_toBottomOf="@id/companyName"/>
+        android:layout_toRightOf="@id/isin_lbl"
+        android:ellipsize="end"
+        android:fontFamily="@font/artifika"
+        android:maxLines="1"
+        android:text="ISIN"
+        android:textColor="#919191"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/rangePrice_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/isin_lbl"
+        android:fontFamily="@font/artifika"
+        android:text="Range Price: "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/rangePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/isin"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/rangePrice_lbl"
+        android:ellipsize="end"
+        android:fontFamily="@font/artifika"
+        android:maxLines="1"
+        android:layout_alignParentEnd="true"
+        android:text="rangePrice"
+        android:textColor="#919191"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/marketCap_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rangePrice_lbl"
+        android:fontFamily="@font/artifika"
+        android:text="Market Cap: "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/marketCap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/marketCap_lbl"
+        android:layout_below="@+id/rangePrice_lbl"
+        android:ellipsize="end"
+        android:fontFamily="@font/artifika"
+        android:maxLines="1"
+        android:layout_alignParentEnd="true"
+        android:text="marketCap"
+        android:textColor="#919191"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/primaryExchange_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/marketCap_lbl"
+        android:fontFamily="@font/artifika"
+        android:text="Primary Exchange: "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"/>
+    <TextView
+        android:id="@+id/primaryExchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/primaryExchange_lbl"
+        android:layout_below="@+id/marketCap"
+        android:ellipsize="end"
+        android:fontFamily="@font/artifika"
+        android:maxLines="1"
+        android:layout_alignParentEnd="true"
+        android:text="ABC"
+        android:textColor="#919191"
+        android:textSize="24sp"
+        android:layout_marginTop="8dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
