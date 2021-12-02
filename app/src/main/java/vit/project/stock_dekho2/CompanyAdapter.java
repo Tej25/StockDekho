@@ -1,6 +1,8 @@
 package vit.project.stock_dekho2;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +35,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.CompanyV
     @Override
     public void onBindViewHolder(@NonNull CompanyAdapter.CompanyViewHolder holder, int position) {
         CompanyData companyData = companyDataList.get(position);
+        Bundle bundle = new Bundle();
 
         holder.companyName.setText(companyData.companySymbol);
         holder.companyData = companyData;
@@ -41,6 +44,10 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.CompanyV
                 @Override
                 public void onClick(View v) {
                     Log.d("ABC","OnClickCompany" + companyData.companySymbol);
+                    Intent intent = new Intent(context,CompanyDetailsActivity.class);
+                    bundle.putString("companySymbol",companyData.companySymbol);
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
                 }
             });
         }
