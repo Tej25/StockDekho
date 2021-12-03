@@ -2,9 +2,11 @@ package vit.project.stock_dekho2;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
@@ -19,8 +21,12 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class CompanyDetailsActivity extends AppCompatActivity {
 
@@ -28,6 +34,7 @@ public class CompanyDetailsActivity extends AppCompatActivity {
     TextView companyName,symbol,companyPrice,isin,rangePrice,marketCap,primaryExchange;
     ProgressDialog progressDialog;
     FirebaseFirestore db;
+    GraphView graphView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class CompanyDetailsActivity extends AppCompatActivity {
         rangePrice = findViewById(R.id.rangePrice);
         marketCap = findViewById(R.id.marketCap);
         primaryExchange = findViewById(R.id.primaryExchange);
+        graphView = (GraphView) findViewById(R.id.graph_example); //
+
 
         Log.d("ABC","Activity created");
         Log.d("ABC","CompanyList intent coming");
@@ -60,11 +69,14 @@ public class CompanyDetailsActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         datafetching();
+
+
     }
 
     private void datafetching() {
         db.collection(companySymbolIntent).document(companySymbolIntent).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.R)
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if(documentSnapshot.exists()){
@@ -82,6 +94,19 @@ public class CompanyDetailsActivity extends AppCompatActivity {
                             marketCap.setText(marketCap_firebase);
                             primaryExchange.setText(primaryExchange_firebase);
                             rangePrice.setText(rangePrice_firebase);
+
+                            //random number generate and usr for loop data points
+
+                            LineGraphSeries<DataPoint> graphValues = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                                    new DataPoint(0,1),
+                                    new DataPoint(4,5),
+                                    new DataPoint(7,6),
+                                    new DataPoint(100000,8)
+
+                            });
+
+                            graphView.addSeries(graphValues);
+
 
                             if(progressDialog.isShowing()){
                                 progressDialog.dismiss();
