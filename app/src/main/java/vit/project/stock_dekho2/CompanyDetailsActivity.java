@@ -1,10 +1,5 @@
 package vit.project.stock_dekho2;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,20 +8,19 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class CompanyDetailsActivity extends AppCompatActivity {
 
@@ -69,8 +63,6 @@ public class CompanyDetailsActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         datafetching();
-
-
     }
 
     private void datafetching() {
@@ -86,6 +78,8 @@ public class CompanyDetailsActivity extends AppCompatActivity {
                             String marketCap_firebase = documentSnapshot.getString("marketCap");
                             String primaryExchange_firebase = documentSnapshot.getString("primaryExchange");
                             String rangePrice_firebase = documentSnapshot.getString("rangePrice");
+                            long max = documentSnapshot.getLong("maxPrice");
+                            long min = documentSnapshot.getLong("minPrice");
 
                             companyName.setText(companyName_firebase);
                             symbol.setText(companySymbolIntent);
@@ -96,17 +90,29 @@ public class CompanyDetailsActivity extends AppCompatActivity {
                             rangePrice.setText(rangePrice_firebase);
 
                             //random number generate and usr for loop data points
+//                            DataPoint[] dataPoint = new DataPoint[12];
+//                            for(int i=0; i<12;i++){
+//                                dataPoint[i]= new DataPoint(i+1, ThreadLocalRandom.current().nextLong(min,max + 1));
+//                            }
 
+//                            Log.d("ABC", "onSuccess: " + dataPoint);
                             LineGraphSeries<DataPoint> graphValues = new LineGraphSeries<DataPoint>(new DataPoint[]{
-                                    new DataPoint(0,1),
-                                    new DataPoint(4,5),
-                                    new DataPoint(7,6),
-                                    new DataPoint(100000,8)
-
+                                    new DataPoint(1,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(2,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(3,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(4,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(5,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(6,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(7,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(8,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(9,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(10,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(11,ThreadLocalRandom.current().nextLong(min,max + 1)),
+                                    new DataPoint(12,ThreadLocalRandom.current().nextLong(min,max + 1))
                             });
 
-                            graphView.addSeries(graphValues);
 
+                            graphView.addSeries(graphValues);
 
                             if(progressDialog.isShowing()){
                                 progressDialog.dismiss();
